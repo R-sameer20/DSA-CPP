@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cout<<"enter number of rows:";cout<<" ";
+    cin>>n;
+    for(int i=1 ; i<=n ; i++)
+       { for(int j=1 ; j<=n-i ; j++){
+            cout<<" ";
+    }
+    for(int k =1 ; k<=i ; k++){
+        cout<<k;
+    }
+        cout<<endl;
+    }
+   
+    
+}
+
+
+// i control row of trangle 
+// j control spaces in row
+// kcontrol no. of digits in trangle

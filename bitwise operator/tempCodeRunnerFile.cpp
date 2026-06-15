@@ -1,0 +1,2 @@
+temp);
+    cout<<ans;

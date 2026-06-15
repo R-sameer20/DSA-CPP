@@ -1,0 +1,31 @@
+#include<iostream>
+#include<string>
+#include<algorithm>
+using namespace std;
+class player{
+    public:
+    int score;
+    int health;
+    string name;
+};
+int main(){
+    player sameer; 
+    sameer.score = 90;
+    sameer.health = 82;
+    sameer.name = "sameer";
+
+    cout<< sameer.name<<endl;
+    cout<< sameer.score<<endl;
+    cout<< sameer.health<<endl;
+
+    player harsh; 
+    harsh.score = 90;
+    harsh.health = 82;
+    harsh.name = " harsh";
+
+   cout<< harsh.name<<endl;
+   cout<< harsh.score<<endl;
+   cout<< harsh.health<<endl;
+
+
+}
