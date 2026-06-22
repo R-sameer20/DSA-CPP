@@ -1,0 +1,34 @@
+cmake_minimum_required(VERSION 3.16)
+project(HuffmanCodec VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Aggressive optimisation in Release; full debug info in Debug
+if(MSVC)
+    add_compile_options(/W4 /WX $<$<CONFIG:Release>:/O2>)
+else()
+    add_compile_options(-Wall -Wextra -Wpedantic)
+    if(CMAKE_BUILD_TYPE STREQUAL "Release")
+        add_compile_options(-O2)
+    elseif(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        add_compile_options(-g -O0)
+    endif()
+endif()
+
+# ── Source files ─────────────────────────────────────────────
+set(SOURCES
+        main.cpp
+        HuffmanTree.cpp
+        Codec.cpp
+)
+
+add_executable(huffman ${SOURCES})
+
+# filesystem library needed on older GCC / MinGW
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_libraries(huffman stdc++fs)
+endif()
+
+# ── Install target (optional) ────────────────────────────────
+install(TARGETS huffman DESTINATION bin)
