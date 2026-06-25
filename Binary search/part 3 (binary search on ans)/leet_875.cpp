@@ -11,10 +11,10 @@ bool check(vector<int>& pile, int mid , int h){
             count++;
         }
         else if(h%pile[i]==0){
-            count+=h/pile[i]+1;
+            count+=((h/pile[i])+1);
         }
         else{
-            count+=(h/pile[i])+1;
+            count+=((h/pile[i]))+1;
         }
     }
 
