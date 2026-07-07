@@ -1,8 +1,8 @@
 #include<iostream>
-#include<algorithm>
 #include<string>
-#include<vector>
+#include<climits> // Needed for INT_MIN
 using namespace std;
+
 int main(){
     int t;
     cin>>t;
@@ -10,46 +10,35 @@ int main(){
         int n;
         cin>>n;
         string str;
-        str.reserve(n);
+        cin>>str;
+        
+        int dotCount = 0;
         for(int i = 0 ; i<n ; i++){
-            cin>>str[i];
+            if(str[i] == '.') dotCount++;
         }
-        int i = 0;
-        int countOfDot = 0;
-        int needToFill = 0;
-        while(i < n-1){
+        
+        int continuousDot = 0;
+        int maxContinuous = INT_MIN; 
+        
+        for(int i = 0 ; i<n ; i++){
             if(str[i] == '.'){
-                countOfDot++;
-            }
-            else{
-                if( countOfDot==0) continue;
-                else{       
-                    if(countOfDot == 1)  needToFill+=1;
-                    else if( countOfDot == 3 || countOfDot == 2 ) needToFill+=2;
-                    else{
-                        if(countOfDot%2 == 0) needToFill  += (countOfDot/2) + 1;
-                        else needToFill  += (countOfDot + 1) / 2;                              
-                    }
-                
+                continuousDot++;
+                if(continuousDot > maxContinuous){
+                    maxContinuous = continuousDot;
                 }
-                countOfDot = 0;
-
+            } 
+            else {
+                continuousDot = 0; 
             }
-            i++;
-          
         }
-        if( countOfDot!=0){
-            if(countOfDot == 1)  needToFill+=1;
-            else if( countOfDot == 3 || countOfDot == 2 ) needToFill+=2;
-            else{
-                if(countOfDot %2 == 0) needToFill  += (countOfDot/2) + 1;
-                else needToFill  += (countOfDot + 1) / 2;                              
-            }
-        countOfDot = 0;
-            
+        
+       
+        if(maxContinuous >= 3){
+            cout << 2 << "\n";
+        } 
+        else {
+            cout << dotCount << "\n";
         }
-        cout<<needToFill<<endl;
-        
-        
     }
+    return 0;
 }
